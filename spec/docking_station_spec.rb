@@ -2,8 +2,5 @@ require 'docking_station'
 
 describe DockingStation do
 
-    it "responds to request to release bike" do
-        station = DockingStation.new
-        expect(station.release_bike).to exist
-    end
+    it {is_expected.to respond_to(:release_bikes)}
 end
