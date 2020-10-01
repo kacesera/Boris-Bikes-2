@@ -18,8 +18,9 @@ describe DockingStation do
     expect(@station.dock(@bike)).to eq("Bike is docked")
   end
 
-  it 'shows bikes' do
-    expect(@station.bike_rack).not_to be_empty
+  it 'shows docked bikes' do
+    @station.bike_rack << @bike
+    expect(@station.bike_rack).to include(@bike)
   end
 
 end

@@ -5,7 +5,7 @@ class DockingStation
   attr_reader :bike_rack
 
   def initialize
-    @bike_rack = [Bike.new]
+    @bike_rack = []
   end
 
   def release_bike
