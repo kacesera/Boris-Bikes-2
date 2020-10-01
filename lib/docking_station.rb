@@ -10,22 +10,24 @@ class DockingStation
   end
 
   def release_bike
-    if !bike_rack.empty?
-      return bike_rack.pop
-    else
-      raise "There are no bikes available."
-    end
+    raise "There are no bikes available."if !self.has_bikes?
+    bike_rack.pop
   end
 
   def dock(bike)
-    if bike_rack.size < 20
-      bike_rack << bike
-      "Bike is docked"
-    else
-      raise "There isn't room for your bike."
-    end
+    raise "There isn't room for your bike." if self.is_full?
+    bike_rack << bike
+    "Bike is docked"
   end
 
-  
+  private
+
+  def is_full?
+    bike_rack.count == 20
+  end
+
+  def has_bikes?
+    bike_rack.count >= 1
+  end
 
 end
