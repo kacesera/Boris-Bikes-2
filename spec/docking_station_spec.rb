@@ -25,11 +25,15 @@ describe DockingStation do
   end
 
   it "does not release bikes, when none are available" do
-    @station.release_bike
+    @station.bike_rack = []
     expect{@station.release_bike}.to raise_error("There are no bikes available.")
   end
 
   it "does not dock bikes if it is full" do 
     expect{@station.dock(@bike)}.to raise_error("There isn't room for your bike.")
+  end
+
+  it "has space for 20 bikes as default" do
+    expect(@station.bike_rack.size).to eq(20)
   end
 end
