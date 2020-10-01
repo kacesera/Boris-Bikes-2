@@ -3,9 +3,9 @@ require_relative 'bike'
 class DockingStation
 
   attr_reader :bike_rack
-  
+
   def initialize
-    @bike_rack = []
+    @bike_rack = [Bike.new]
   end
 
   def release_bike
