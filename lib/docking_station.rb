@@ -12,15 +12,21 @@ class DockingStation
   end
 
   def release_bike
-    raise "There are no bikes available."if !self.has_bikes?
-    bike_rack.pop
+    raise "There are no bikes available." if !self.has_bikes?
+
+    bike_rack.each do |bike|
+      if bike.working?
+        return bike_rack.delete(bike)
+      end
+    end 
+
+    raise "all bikes broken" 
   end
 
   def dock(bike)
     raise "There isn't room for your bike." if self.is_full?
 
-    puts "Is the bike working? Type Y or N"
-    bike.working?(gets.chomp.upcase)
+    set_status(bike)
 
     bike_rack << bike
     "Bike is docked"
@@ -29,11 +35,15 @@ class DockingStation
   private
 
   def is_full?
-    bike_rack.count == DEFAULT_CAPACITY
+    bike_rack.count == capacity
   end
 
   def has_bikes?
     bike_rack.count >= 1
   end
 
+  def set_status(bike)
+    puts "Is the bike working? Type Y or N"
+    bike.working?(gets.chomp.upcase)
+  end
 end

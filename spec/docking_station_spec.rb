@@ -46,4 +46,10 @@ describe DockingStation do
     @station.release_bike
     expect{@station.dock(@bike)}.to output("Is the bike working? Type Y or N\n").to_stdout
   end
+
+  it "doesn't release broken bikes" do
+    @station.bike_rack = []
+    @station.dock(@bike)
+    expect{@station.release_bike}.to raise_error("all bikes broken")
+  end
 end

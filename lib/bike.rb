@@ -2,12 +2,13 @@ class Bike
   
   attr_reader :working
 
-  def initialize
-    @working = "Y"
+  def initialize(working = "Y")
+    @working = working 
   end
 
   def working?(status = @working)
-    return false if status == "N"
+    @working = status
+    return false if @working == "N"
     true
   end
 
