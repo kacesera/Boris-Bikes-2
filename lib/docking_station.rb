@@ -17,8 +17,12 @@ class DockingStation
   end
 
   def dock(bike)
-    bike_rack << bike
-    "Bike is docked"
+    if bike_rack.empty?
+      bike_rack << bike
+      "Bike is docked"
+    else
+      raise "There isn't room for your bike."
+    end
   end
 
 end
