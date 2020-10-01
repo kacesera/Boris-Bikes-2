@@ -18,6 +18,10 @@ class DockingStation
 
   def dock(bike)
     raise "There isn't room for your bike." if self.is_full?
+
+    puts "Is the bike working? Type Y or N"
+    working = gets.chomp.upcase
+    
     bike_rack << bike
     "Bike is docked"
   end

@@ -40,5 +40,10 @@ describe DockingStation do
   it "can have different capacity" do
     new_ds = DockingStation.new(30)
     expect(new_ds.bike_rack.size).to eq(30)
-  end 
+  end
+  
+  it "ask if bike is working when returned to docking station" do
+    @station.release_bike
+    expect{@station.dock(@bike)}.to output("Is the bike working? Type Y or N\n").to_stdout
+  end
 end
