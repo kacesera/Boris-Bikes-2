@@ -23,4 +23,8 @@ describe DockingStation do
     expect(@station.bike_rack).to include(@bike)
   end
 
+  it "does not release bikes, when none are available" do
+    @station.release_bike
+    expect{@station.release_bike}.to raise_error("There are no bikes available.")
+  end
 end

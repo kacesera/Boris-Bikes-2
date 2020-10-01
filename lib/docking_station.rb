@@ -5,11 +5,15 @@ class DockingStation
   attr_reader :bike_rack
 
   def initialize
-    @bike_rack = []
+    @bike_rack = [Bike.new]
   end
 
   def release_bike
-    Bike.new
+    if !bike_rack.empty?
+      return bike_rack.pop
+    else
+      raise "There are no bikes available."
+    end
   end
 
   def dock(bike)
