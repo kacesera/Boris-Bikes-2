@@ -36,4 +36,9 @@ describe DockingStation do
   it "has space for 20 bikes as default" do
     expect(@station.bike_rack.size).to eq(DockingStation::DEFAULT_CAPACITY)
   end
+
+  it "can have different capacity" do
+    new_ds = DockingStation.new(30)
+    expect(new_ds.bike_rack.size).to eq(30)
+  end 
 end

@@ -3,11 +3,12 @@ require_relative 'bike'
 class DockingStation
   
   DEFAULT_CAPACITY = 20
-  attr_accessor :bike_rack
+  attr_accessor :bike_rack, :capacity
 
-  def initialize
+  def initialize(capacity = DEFAULT_CAPACITY)
+    @capacity = capacity
     @bike_rack = []
-    DEFAULT_CAPACITY.times {bike_rack << Bike.new}
+    capacity.times {bike_rack << Bike.new}
   end
 
   def release_bike
